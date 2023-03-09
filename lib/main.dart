@@ -1,8 +1,11 @@
+// ignore_for_file: avoid_print
+
+import 'dart:ffi';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -10,6 +13,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    //TODO test
+    doSomething();
+
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -112,4 +118,51 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+}
+
+enum MyColor { red, good }
+
+// 练习一下dart 语法
+const routers =
+    (<MyColor, String>{MyColor.good: "heheda", MyColor.red: 'dadada'});
+
+void doSomething() {
+  var entries = routers.entries.toList();
+  var allName = powerReduce(entries, (prev, current, _) {
+    return prev! + current.value;
+  }, '');
+  print(allName);
+
+  List<String> a = ["xxx", "xxxx2"];
+  List<String> b = [];
+  final c = [...a, ...b];
+
+  print("List >>$c");
+
+  Map<String, dynamic> d = {
+    "xxx": 123,
+    "made": [1, 23],
+    'dede': "p"
+  };
+
+  Map<String, dynamic> e = {
+    "x3": 13,
+    "made2": {12: 45},
+  };
+
+  final f = {...d, ...e};
+
+  print("map $f");
+}
+
+typedef PowerReduceCall<S, T> = T Function(T? prev, S current, int index);
+
+T? powerReduce<S, T>(List<S> arr, PowerReduceCall<S, T> cb, [T? initValue]) {
+  if (arr.isEmpty) return null;
+  T? p = initValue;
+  for (int index = 0; index < arr.length; index++) {
+    p = cb(p, arr[index], index);
+  }
+
+  return p;
 }
