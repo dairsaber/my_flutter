@@ -131,13 +131,13 @@ void doSomething() {
   var allName = powerReduce(entries, (prev, current, _) {
     return prev! + current.value;
   }, '');
-  print(allName);
+  debugPrint(allName);
 
   List<String> a = ["xxx", "xxxx2"];
   List<String> b = [];
   final c = [...a, ...b];
 
-  print("List >>$c");
+  debugPrint("List >>$c");
 
   Map<String, dynamic> d = {
     "xxx": 123,
@@ -152,7 +152,7 @@ void doSomething() {
 
   final f = {...d, ...e};
 
-  print("map $f");
+  debugPrint("map $f");
 }
 
 typedef PowerReduceCall<S, T> = T Function(T? prev, S current, int index);
