@@ -1,0 +1,10 @@
+{
+    "scripts": {
+        "dev": "flutter run --debug",
+        "preview": "flutter run --release",
+        "build:android":"flutter build apk",
+        "build:ios":"flutter build ios",
+        "clean":"flutter clean",
+        "gmodel":"flutter packages pub run json_model"
+    }
+}

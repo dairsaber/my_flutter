@@ -1,0 +1,14 @@
+{
+    "@meta": {
+        "comments": {
+            "username": "用户名",
+            "age": "年龄"
+        },
+        "nullable": false,
+        "ignore": false
+    },
+    "username": "张三",
+    "age": 18,
+    "gender?": "男",
+    "roles?": "$[]role"
+}

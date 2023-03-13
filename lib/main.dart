@@ -4,8 +4,16 @@ import 'dart:ffi';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:my_flutter/common/bootstrap.dart';
+import 'package:my_flutter/pages/welcome/welcome_page.dart';
 
-void main() => runApp(const MyApp());
+void main() => bootstrap();
+
+// 启动函数
+void bootstrap() async {
+  await Bootstrap().init();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -30,7 +38,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const WelcomePage(),
     );
   }
 }
