@@ -3,8 +3,6 @@ import 'package:flutter_webview_pro/webview_flutter.dart';
 
 import 'dart:io' show Platform;
 
-// import 'navigation_controller.dart';
-
 class Web extends StatefulWidget {
   const Web({Key? key}) : super(key: key);
 
@@ -53,8 +51,7 @@ class _WebState extends State<Web> {
           backgroundColor: Colors.white,
           body: SafeArea(
               child: WebView(
-            initialUrl:
-                'https://vant-contrib.gitee.io/vant/mobile.html#/zh-CN/uploader',
+            initialUrl: 'http://192.168.110.111:5173/#/',
             javascriptMode: JavascriptMode.unrestricted,
             onWebViewCreated: (WebViewController webViewController) {
               _controller = webViewController;
@@ -85,14 +82,4 @@ class _WebState extends State<Web> {
           )),
         ));
   }
-}
-
-// ====工具函数====
-void printErr(WebResourceError error) {
-  debugPrint('''
-Page resource error:
-  code: ${error.errorCode}
-  description: ${error.description}
-  errorType: ${error.errorType}
-          ''');
 }
